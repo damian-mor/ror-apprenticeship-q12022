@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  pokeapi_id: 1
+  effect: MyString
+  short_effect: MyString
+
+two:
+  name: MyString
+  pokeapi_id: 1
+  effect: MyString
+  short_effect: MyString
