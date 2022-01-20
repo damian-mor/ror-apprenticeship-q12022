@@ -1,6 +1,24 @@
 <h1>Welcome to PokeTeamBuilder</h1>
 <p>Here is the list of the current Trainers
   <div>
-    <>
+    <p><%= link_to('New Trainer', new_trainer_path)%></p>
   </div>
+  <table>
+    <tr>
+      <th>Trainer</th>
+      <th>Trainer Actions</th>
+    </tr>
+    <% @trainers.each do |trainer| %>
+    <tr>
+      <td><%= trainer.name %></td>
+      <td>
+        <%= link_to('Show', trainer_path(trainer))%>
+        <%= link_to('Edit', edit_trainer_path(trainer))%>
+        <%= form_for(trainer, url: trainer_path(trainer), method: 'delete') do |f| %>
+          <%= f.submit('Delete') %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 </p>
