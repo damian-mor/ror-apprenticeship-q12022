@@ -32,6 +32,19 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.label :is_mythical, style: "display: block" %>
+    <%= form.check_box :is_mythical %>
   </div>
+
+  <div>
+    <%= form.label :forms_switchable, style: "display: block" %>
+    <%= form.check_box :forms_switchable %>
+  </div>
+
+  <div>
+    <%= form.label :is_default, style: "display: block" %>
+    <%= form.check_box :is_default %>
+  </div>
+
+  
 <% end %>
