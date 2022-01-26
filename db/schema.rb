@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_24_201402) do
+ActiveRecord::Schema.define(version: 2022_01_26_004120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2022_01_24_201402) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "egg_groups_pokemons", force: :cascade do |t|
+    t.bigint "pokemon_id"
+    t.bigint "egg_group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["egg_group_id"], name: "index_egg_groups_pokemons_on_egg_group_id"
+    t.index ["pokemon_id"], name: "index_egg_groups_pokemons_on_pokemon_id"
   end
 
   create_table "pokemons", force: :cascade do |t|
@@ -32,13 +41,10 @@ ActiveRecord::Schema.define(version: 2022_01_24_201402) do
     t.bigint "evolves_to_pokemon_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "egg_group_id", null: false
-    t.index ["egg_group_id"], name: "index_pokemons_on_egg_group_id"
     t.index ["evolves_to_pokemon_id"], name: "index_pokemons_on_evolves_to_pokemon_id"
     t.index ["variety_of_pokemon_id"], name: "index_pokemons_on_variety_of_pokemon_id"
   end
 
-  add_foreign_key "pokemons", "egg_groups"
   add_foreign_key "pokemons", "pokemons", column: "evolves_to_pokemon_id"
   add_foreign_key "pokemons", "pokemons", column: "variety_of_pokemon_id"
 end
